@@ -1,0 +1,34 @@
+{
+  "bit": {
+    "styles": {
+      "logo": "logotheme.png",
+      "htmlbg": "munition.png",
+      "bordercolor": "#009999",
+      "imgheight": "35%",
+      "spaceship1": "raumschiff1theme.png",
+      "spaceship2": "raumschiff2theme.png",
+      "spaceship3": "raumschiff3theme.png",
+      "spaceship4": "raumschiff4theme.png",
+      "canvasbg": ""
+    }
+  },
+
+  "default": {
+    "styles": {
+      "logo": "logo.png",
+      "htmlbg": "htmlbackground.jpg",
+      "bordercolor": "transparent",
+      "imgheight": "25%",
+      "spaceship1": "raumschiff1.png",
+      "spaceship2": "raumschiff2.png",
+      "spaceship3": "raumschiff3.png",
+      "spaceship4": "raumschiff4.png",
+      "spaceship1l": "raumschiff1l.png",
+      "spaceship2l": "raumschiff2l.png",
+      "spaceship3l": "raumschiff3l.png",
+      "spaceship4l": "raumschiff4l.png",
+      "canvasbg": "background.png"
+    }
+  }
+
+}

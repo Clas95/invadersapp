@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Einbindung der CSS, Javascript und Jquery -->
+    <link rel="stylesheet" href="invaders.css" type="text/css">
+    <script src="jquery.js"></script>
+    <script type="text/javascript" src="invaders.js"></script>
+    <meta charset="UTF-8">
+    <title>Invaders Must Die!</title>
+</head>
+<body id="bodytag">
+<!-- Button zum ändern des Themes, über restlicher Struktur -->
+<button type="button" id="buttonTheme" onclick="ajaxPost()"></button>
+<!-- Elemente der Startseite zusammengefasst in eine Section -->
+<section id="startseiteSection">
+    <!-- Logo auf der Startseite -->
+    <img id="startbild" src="logo.png">
+    <br>
+    <!-- Buttons zu den jeweiligen Seiten -->
+    <button type="button" class="startseiteButton" id="buttonAnlei">  Anleitung </button>
+    <button type="button" class="startseiteButton" id="buttonStart"> Spiel starten </button>
+    <button type="button" class="startseiteButton" id="buttonScore">  Scoreboard </button>
+</section>
+<!-- Elemente der Anleitung zusammengefasst in eine Section -->
+<section id="anleitungSection">
+    <!-- Container der Anleitungselemente, zentriert -->
+    <div id="anleitungDiv" style="margin:0 auto;">
+        <!-- Vor und Zurückbuttons -->
+        <button id="galleryZur" onclick="prevImg()"></button>
+        <button id="galleryVor" onclick="nextImg()"></button>
+        <!-- container für die Navigationspunkte -->
+        <div id="navDiv" align="center">
+            <button class="slideNav" id="nav0" disabled onclick="goToImg(0)"></button>
+            <button class="slideNav" id="nav1" onclick="goToImg(1)"></button>
+            <button class="slideNav" id="nav2" onclick="goToImg(2)"></button>
+            <button class="slideNav" id="nav3" onclick="goToImg(3)"></button>
+            <button class="slideNav" id="nav4" onclick="goToImg(4)"></button>
+        </div>
+        <!-- Aktuelles Bild der Anleitung -->
+        <img id="imageSlider" src="anleitung0.png">
+
+        <br>
+        <!-- Schriftliche Anleitung -->
+        <p id="sliderBeschreibung">Starten Sie das Spiel mithilfe des Start-Buttons.</p>
+        <br>
+    </div>
+       <br>
+    <!-- Zurück-Button -->
+    <button type="button" class="startseiteButton" id="buttonAnleiBack">  Zur&uuml;ck </button>
+</section>
+<!-- Elemente des Scoreboards zusammengefasst in einer Section -->
+<section id="scoreboardSection">
+    <!-- Container für die Scoreanzeige, zentriert -->
+    <div id="scoreDiv" style="margin:0 auto;">
+        <br>
+        <!-- Tabelle für das Scoreboard -->
+        <table id="scoreTable" align="center">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Datum</th>
+                <th>KD</th>
+            </tr>
+            <tr id="tr1">
+                <td>1</td>
+                <td id="td11"></td>
+                <td id="td12"></td>
+                <td id="td13"></td>
+            </tr>
+            <tr id="tr2">
+                <td>2</td>
+                <td id="td21"></td>
+                <td id="td22"></td>
+                <td id="td23"></td>
+            </tr>
+            <tr id="tr3">
+                <td>3</td>
+                <td id="td31"></td>
+                <td id="td32"></td>
+                <td id="td33"></td>
+            </tr>
+            <tr id="tr4">
+                <td>4</td>
+                <td id="td41"></td>
+                <td id="td42"></td>
+                <td id="td43"></td>
+            </tr>
+            <tr id="tr5">
+                <td>5</td>
+                <td id="td51"></td>
+                <td id="td52"></td>
+                <td id="td53"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <!-- Button zum Zurücksetzen des Scoreboards (Leeren des Localstorage) -->
+        <button type="button" class="startseiteButton" id="resetStats" onclick="statsReset()">  reset </button>
+    </div>
+    <!-- Zurück-Button -->
+    <button type="button" class="startseiteButton" id="buttonScoreBack">  Zur&uuml;ck </button>
+</section>
+<!-- Elemente des Spiels zusammengefasst in einer Section -->
+<section id="spielSection">
+    <!-- Container für die Elemente des Spiels, zentriert -->
+    <div id="spielDiv" style="margin:0 auto;">
+        <!-- Container für die Zeitleiste -->
+        <div id="obenDiv">
+        <canvas id="timeLine" width="900" height="30"></canvas>
+        </div>
+        <!-- Container für das Spielcanvas -->
+        <div id="mitteDiv">
+        <canvas id="canvas" width="720" height="570"></canvas>
+        </div>
+        <!-- Container für die Wertanzeige -->
+        <div id="rechtsDiv">
+            <p class="beschreibung">Munition</p>
+            <!-- Container für die Munitionsanzeige, auf das JS zugreift, um die Images zu generieren -->
+            <div id="bulletsDiv"></div>
+            <!-- Button zum Nachladen -->
+        <button class="beschreibung" id="ladeStatus" onclick="reloadBtn()">Nachladen</button>
+        <p class="beschreibung">Letzter Schuss</p>
+        <p class="wert" id="lastShot">Verfehlt</p>
+        <p class="beschreibung">Abschussrate</p>
+        <p class="wert" id="kD">0</p>
+        <p class="beschreibung">Treffer</p>
+        <p class="wert" id="hits">0</p>
+        <p class="beschreibung">Aliens durchgekommen</p>
+        <p class="wert" id="missedAliens">0</p>
+        <p class="beschreibung">Abgegebene Sch&uuml;sse</p>
+        <p class="wert" id="shots">0</p>
+        <p class="beschreibung">Verbeibende Zeit</p>
+        <p class="wert" id="timeRemaining">2:26</p>
+            <br>
+        <button onclick="startButton()" id="startButton">Starten</button>
+        </div>
+        </div>
+    <!-- Button zum verlassen des Spielbereichs -->
+    <button type="button" class="startseiteButton" id="buttonStartBack">  Zur&uuml;ck </button>
+
+</section>
+<!-- Elemente des Spielendes zusammengefasst in einer Section -->
+<section id="spielendeSection" align="center">
+    <!-- Container für die Endwerte, zentriert -->
+    <div id="spielendeDiv" style="width:300px; margin:0 auto;">
+        <br>
+    <p class="beschreibung">Abschussrate</p>
+    <p class="wert" id="kD2">0</p>
+    <p class="beschreibung">Treffer</p>
+    <p class="wert" id="hits2">0</p>
+    <p class="beschreibung">Aliens durchgekommen</p>
+    <p class="wert" id="missedAliens2">0</p>
+    <p class="beschreibung">Abgegebene Sch&uuml;sse</p>
+    <p class="wert" id="shots2">0</p>
+        <!-- Eingabefeld für den Spielernamen -->
+        <input type="text" id="nameInput" name="spielerName" value="Name">
+    </div>
+    <br>
+    <!-- Zurückbutton außerhalb des Containers -->
+    <button type="submit" value="Submit Data" class="startseiteButton" id="buttonEndeBack">Absenden</button>
+</section>
+</body>
+</html>
