@@ -116,7 +116,7 @@ var nachLinks = ["raumschiff1l.png", "raumschiff2l.png", "raumschiff3l.png", "ra
 const anleitungArr = ["anleitung0.png", "anleitung1.png", "anleitung2.png", "anleitung3.png", "anleitung4.png"];
 
 // Audioeinbindung
-const song = new Audio("The Prodigy - Invaders Must Die.mp3");
+const song = new Audio("invaders.mp3");
 song.volume = 0.7;
 const techExplosion1 = new Audio("techexplosion.mp3");
 techExplosion1.volume = 0.3;
